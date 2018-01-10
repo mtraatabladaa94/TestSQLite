@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Test SQLite</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Salir</string>
+
+    <string name="app_copyright">Ing. Michel Roberto Traña Tablada</string>
+    <string name="app_copyright_email">mtraatabladaa94@gmail.com</string>
+    <string name="title_activity_check_list">Listado de Encuestas</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_create_pearson">CreatePearsonActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+</resources>

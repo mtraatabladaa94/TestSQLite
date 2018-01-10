@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <group
+        android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/navShare"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Código de App" />
+    </group>
+
+    <item android:title="Mis Redes">
+        <menu>
+            <item
+                android:id="@+id/navFb"
+                android:icon="@drawable/ic_fb"
+                android:title="Facebook" />
+            <item
+                android:id="@+id/navGh"
+                android:icon="@drawable/ic_gh"
+                android:title="Github" />
+            <item
+                android:id="@+id/navLk"
+                android:icon="@drawable/ic_lk"
+                android:title="Linkedin" />
+        </menu>
+    </item>
+
+</menu>
