@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class ListPearsonFragment extends Fragment {
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layout;
     ArrayList<PearsonDataProvider> arrayList = new ArrayList<PearsonDataProvider>();
+    SwipeRefreshLayout swipeRefreshLayout;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,13 +100,22 @@ public class ListPearsonFragment extends Fragment {
         });
 
         //AQUI VA EL CODIGO DEL DISEÑO
-        try {
-            this.recyclerView = (RecyclerView)view.findViewById(R.id.rcvPearsonList);
-            this.LoadData();
-        }
-        catch(Exception ex) {
-            Toast.makeText(this.getActivity(), "Error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-        }
+        this.recyclerView = (RecyclerView)view.findViewById(R.id.rcvPearsonList);
+        this.LoadData();
+
+        //SWIPER
+        this.swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swipe_container);
+        this.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+
+                LoadData();
+                swipeRefreshLayout.setRefreshing(false);
+
+            }
+
+        });
 
         return view;
     }
@@ -142,12 +153,19 @@ public class ListPearsonFragment extends Fragment {
         return controller.getPearsons();
     }
 
-    private void LoadData() throws SQLException {
-        this.adapter = new PearsonRecyclerAdapter(this.getPearsons());
-        this.recyclerView.setHasFixedSize(true);
-        this.layout = new LinearLayoutManager(this.getActivity());
-        recyclerView.setLayoutManager(this.layout);
-        recyclerView.setAdapter(this.adapter);
+    private void LoadData() {
+
+        try {
+            this.adapter = new PearsonRecyclerAdapter(this.getPearsons());
+            this.recyclerView.setHasFixedSize(true);
+            this.layout = new LinearLayoutManager(this.getActivity());
+            recyclerView.setLayoutManager(this.layout);
+            recyclerView.setAdapter(this.adapter);
+        }
+        catch(Exception ex) {
+            Toast.makeText(this.getActivity(), "Error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
     }
 
 }

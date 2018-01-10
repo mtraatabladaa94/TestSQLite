@@ -13,7 +13,7 @@ import com.teamsadara.testsqlite.models.pojo.Pearson;
 import com.teamsadara.testsqlite.models.dataBase.ModelDb;
 import com.teamsadara.testsqlite.models.dataProvider.PearsonDataProvider;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,5 +1,7 @@
 package com.teamsadara.testsqlite;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 //import android.app.Fragment;
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -95,22 +97,22 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.navShare) {
 
             // Share action
-
+            this.openLink("https://github.com/mtraatabladaa94/TestSQLite/");
 
         } else if (id == R.id.navFb) {
 
             // Abrir Facebook
-
+            this.openLink("https://www.facebook.com/mtraatabladaa94");
 
         } else if (id == R.id.navGh) {
 
             // Abrir Github
-
+            this.openLink("https://github.com/mtraatabladaa94/");
 
         } else if (id == R.id.navLk) {
 
             // Abrir Linkedin
-
+            this.openLink("https://www.linkedin.com/in/mtraatabladaa94/");
 
         }
 
@@ -118,6 +120,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
+    }
+
+    private void openLink(String link) {
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        startActivity(intent);
 
     }
 
